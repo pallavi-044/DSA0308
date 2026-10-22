@@ -1,0 +1,16 @@
+import nltk
+from nltk.stem import PorterStemmer
+
+print("Name: Pallavi")
+print("Register Number: 192472203")
+print("------------------------------")
+
+# Create stemmer
+ps = PorterStemmer()
+
+# Given words
+words = ["playing", "played", "plays", "happiness", "running"]
+
+# Perform morphological analysis
+for word in words:
+    print(word, "->", ps.stem(word))
