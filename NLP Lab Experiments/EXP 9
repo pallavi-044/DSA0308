@@ -1,0 +1,25 @@
+from nltk.tag import RegexpTagger
+
+patterns = [
+    (r'^(The|the|a|an)$', 'DT'),
+    (r'^(I|you|he|she|we|they)$', 'PRP'),
+    (r'^(is|am|are|was|were)$', 'VB'),
+    (r'^\d+$', 'CD'),
+    (r'.*ing$', 'VBG'),
+    (r'.*ed$', 'VBD'),
+    (r'.*ly$', 'RB'),
+    (r'^(quick|beautiful|small|big)$', 'JJ'),
+    (r'.*', 'NN')
+]
+
+tagger = RegexpTagger(patterns)
+
+sentence = "The beautiful boy is playing"
+
+words = sentence.split()
+
+result = tagger.tag(words)
+
+print("Rule Based POS Tagging:")
+for word, tag in result:
+    print(word, ":", tag)
