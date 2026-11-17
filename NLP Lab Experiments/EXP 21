@@ -1,0 +1,29 @@
+import nltk
+from nltk import word_tokenize, pos_tag, RegexpParser
+from nltk.corpus import wordnet
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('wordnet')
+
+sentence = "The smart student reads books"
+
+words = word_tokenize(sentence)
+tagged = pos_tag(words)
+
+grammar = "NP: {<DT>?<JJ>*<NN.*>+}"
+parser = RegexpParser(grammar)
+
+tree = parser.parse(tagged)
+
+for subtree in tree.subtrees():
+    if subtree.label() == "NP":
+        phrase = " ".join(word for word, tag in subtree.leaves())
+        print("Noun Phrase:", phrase)
+
+        for word, tag in subtree.leaves():
+            if tag.startswith("NN"):
+                meanings = wordnet.synsets(word)
+                if meanings:
+                    print(word, ":", meanings[0].definition())
