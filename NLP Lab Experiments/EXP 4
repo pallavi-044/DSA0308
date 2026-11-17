@@ -1,0 +1,18 @@
+def plural(word):
+    print("Input Word:", word)
+
+    if word.endswith(("s", "x", "z", "ch", "sh")):
+        result = word + "es"
+    elif word.endswith("y") and word[-2] not in "aeiou":
+        result = word[:-1] + "ies"
+    else:
+        result = word + "s"
+
+    print("Plural Form:", result)
+    print("State Transition: q0 -> q1 -> q2 -> q3")
+    print()
+
+words = ["cat", "box", "baby", "bus", "class"]
+
+for word in words:
+    plural(word)
