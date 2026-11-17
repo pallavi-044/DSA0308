@@ -1,0 +1,15 @@
+import nltk
+from nltk.wsd import lesk
+
+nltk.download('wordnet')
+
+sentence = "I deposited money in the bank"
+word = "bank"
+
+sense = lesk(sentence.split(), word)
+
+if sense:
+    print("Word:", word)
+    print("Meaning:", sense.definition())
+else:
+    print("No meaning found")
