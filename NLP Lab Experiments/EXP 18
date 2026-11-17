@@ -1,0 +1,10 @@
+import re
+
+expression = "Human(Socrates)"
+
+pattern = r"^[A-Za-z]+\([A-Za-z]+\)$"
+
+if re.match(pattern, expression):
+    print("Valid logical expression")
+else:
+    print("Invalid logical expression")
