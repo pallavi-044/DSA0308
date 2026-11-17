@@ -1,0 +1,13 @@
+text = "Ravi is a student. He studies Python."
+
+words = text.split()
+noun = ""
+
+for i, word in enumerate(words):
+    if word.lower() == "ravi":
+        noun = word
+
+    if word.lower() == "he" and noun:
+        words[i] = noun
+
+print(" ".join(words))
