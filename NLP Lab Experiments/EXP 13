@@ -1,0 +1,15 @@
+import nltk
+from nltk import CFG
+
+grammar = CFG.fromstring("""
+S -> NP VP
+NP -> 'John' | 'Mary'
+VP -> V NP
+V -> 'likes'
+""")
+
+parser = nltk.EarleyChartParser(grammar)
+sentence = "John likes Mary".split()
+
+for tree in parser.parse(sentence):
+    print(tree)
