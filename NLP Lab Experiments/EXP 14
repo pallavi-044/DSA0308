@@ -1,0 +1,14 @@
+def check_agreement(subject, verb):
+    if subject in ["he", "she", "it"]:
+        expected = "is"
+    else:
+        expected = "are"
+
+    if verb == expected:
+        print("Correct agreement")
+    else:
+        print("Incorrect agreement")
+
+check_agreement("he", "is")
+check_agreement("they", "are")
+check_agreement("she", "are")
