@@ -1,0 +1,15 @@
+words = ["book", "play", "beautiful", "run"]
+
+probabilities = {
+    "book": {"NN": 0.8, "VB": 0.2},
+    "play": {"NN": 0.3, "VB": 0.7},
+    "beautiful": {"JJ": 0.9, "NN": 0.1},
+    "run": {"NN": 0.4, "VB": 0.6}
+}
+
+print("Stochastic POS Tagging")
+print("----------------------")
+
+for word in words:
+    tag = max(probabilities[word], key=probabilities[word].get)
+    print(word, ":", tag)
