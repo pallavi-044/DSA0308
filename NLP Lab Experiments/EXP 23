@@ -1,0 +1,23 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+text = [
+    "Python is a programming language.",
+    "Python is used for software development.",
+    "The weather is very hot today."
+]
+
+vectorizer = TfidfVectorizer()
+matrix = vectorizer.fit_transform(text)
+
+for i in range(len(text) - 1):
+    score = cosine_similarity(
+        matrix[i], matrix[i + 1]
+    )[0][0]
+
+    print("Similarity:", round(score, 2))
+
+    if score > 0.1:
+        print("Sentences are related")
+    else:
+        print("Sentences are less related")
