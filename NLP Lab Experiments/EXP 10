@@ -1,0 +1,27 @@
+words = ["The", "boy", "is", "playing", "cricket"]
+
+# Initial tagging
+tags = []
+
+for word in words:
+    tags.append([word, "NN"])
+
+# Transformation rules
+for item in tags:
+    word = item[0]
+
+    if word.lower() in ["the", "a", "an"]:
+        item[1] = "DT"
+
+    elif word.lower() in ["is", "am", "are"]:
+        item[1] = "VBZ"
+
+    elif word.endswith("ing"):
+        item[1] = "VBG"
+
+    elif word.lower() in ["he", "she", "they", "we"]:
+        item[1] = "PRP"
+
+print("Transformation Based Tagging:")
+for word, tag in tags:
+    print(word, ":", tag)
